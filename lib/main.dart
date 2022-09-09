@@ -17,15 +17,25 @@ class Home extends StatefulWidget{
 class _HomeState extends State<Home>{
   int n_students = 0;
 
- // FUNCAO CHANGE LA
+  void _change(int delta){
+    setState(() {
+      n_students += delta;
+    });
+  }
+
+  String _changeLabState(int n_students){
+    if (n_students >= 36) { return "LAB TA CHEIO!";}
+    else if (n_students <= 0) { return "LAB TA VAZIO"; }
+    else { return "Lab ta OK";}
+  }
 
   @override
     Widget build(BuildContext context){
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        const Text(
-          "Students: 0",
+        Text(
+          "Students: $n_students",
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
 
@@ -35,18 +45,27 @@ class _HomeState extends State<Home>{
 
             Padding(padding: EdgeInsets.all(9.0),
               child: TextButton(
-                onPressed: () {},
-                child: const Text("+", style: TextStyle(fontSize: 40, color: Colors.green),),
+                onPressed: () {
+                  _change(1);
+                },
+                child: Text("+", style: TextStyle(fontSize: 40, color: Colors.green),),
               ),
             ),
 
             Padding(padding: EdgeInsets.all(20.0),
               child: TextButton(
-                onPressed: () {},
-                child: const Text("-", style: TextStyle(fontSize: 40, color: Colors.red),),
+                onPressed: () {
+                  _change(-1);
+                },
+                child: Text("-", style: TextStyle(fontSize: 40, color: Colors.red),),
               ),
             )
           ],
+        ),
+
+        Text(
+          _changeLabState(n_students),
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
       ],
     );
