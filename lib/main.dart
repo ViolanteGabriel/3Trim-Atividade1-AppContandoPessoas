@@ -1,17 +1,27 @@
 import 'package:flutter/material.dart';
 
-void addStudent(int delta){
-  setState((){
-    _alunos += delta;
-  });
+void main(){
+  runApp(MaterialApp(
+    title: "Counting Students",
+    home: Home(),
+  ));
 }
 
-void main()
-{
-  //Commando to run the appliation
-  runApp(MaterialApp( // Widget instance that will be runed
-    title: "Couting students", // Internal Use (It's optional)
-    home: Column(
+class Home extends StatefulWidget{
+  const Home({Key? key}) : super(key: key);
+
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home>{
+  int n_students = 0;
+
+ // FUNCAO CHANGE LA
+
+  @override
+    Widget build(BuildContext context){
+    return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         const Text(
@@ -39,7 +49,6 @@ void main()
           ],
         ),
       ],
-    ),
-  ));
-
+    );
+  }
 }
