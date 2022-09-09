@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 
+// Author: Gabriel Machado Violante
+// Turma 303
+// 09/09/2022
+
+
 void main(){
   runApp(MaterialApp(
     title: "Counting Students",
